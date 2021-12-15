@@ -1,0 +1,26 @@
+schema {
+  query: Query
+}
+
+type Query {
+    product(id: ID!): Product
+    products: [Product!]!
+}
+
+interface Product {
+    id: ID!
+    name: String!
+    status: ProductStatus!
+    version: Int!
+    creationDateTime: IsoDateTime!
+    updatedDateTime: IsoDateTime
+}
+
+enum ProductStatus {
+    DRAFT,
+    OFFERING,
+    ACTIVE,
+    EXPIRED
+}
+
+scalar IsoDateTime
