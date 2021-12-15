@@ -3,7 +3,7 @@ schema {
 }
 
 type Query {
-    product(id: ID!): Product
+    product(id: ID!, status: ProductStatus!): Product
     products: [Product!]!
 }
 
@@ -12,15 +12,17 @@ interface Product {
     name: String!
     status: ProductStatus!
     version: Int!
-    creationDateTime: IsoDateTime!
+    createdDateTime: IsoDateTime!
     updatedDateTime: IsoDateTime
+    quantity: Int!
 }
 
 enum ProductStatus {
     DRAFT,
     OFFERING,
     ACTIVE,
-    EXPIRED
+    EXPIRED,
+    REMOVED
 }
 
 scalar IsoDateTime

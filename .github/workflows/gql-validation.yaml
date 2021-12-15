@@ -1,0 +1,17 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - uses: kamilkisiela/graphql-inspector@master
+        name: GraphQL Validation
+        with:
+          schema: 'master:schema.graphql'
